@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ac3c0406e5c69c4c8851f9d6b5d961a, type: 3}
-  m_Name: Kevin
+  m_Name: Angel
   m_EditorClassIdentifier: Assembly-CSharp::Item
   tile: {fileID: 0}
   type: 2
-  actionType: 0
+  actionType: 2
   range: {x: 5, y: 4}
-  stackable: 1
-  image: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  stackable: 0
+  image: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}

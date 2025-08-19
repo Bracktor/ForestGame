@@ -22,17 +22,19 @@ public class Item : ScriptableObject
 
 }
 
-public enum ItemType {
+public enum ItemType
+{
     HealingItem,
     Food,
-    Weeapon,
-    Key
+    Weapon,
+    Key,
+    Artifact
 }
 
 public enum ActionType {
     Use,
     Eat,
     Shoot,
-    Open
+    Drop
     
 }
