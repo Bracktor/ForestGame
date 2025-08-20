@@ -19,4 +19,30 @@ public class DemoScript : MonoBehaviour
             Debug.Log("Item not addded Inventory Full!");
         }
     }
+
+    public void GetSelectedItem()
+    {
+        Item receivedItem = inventoryManager.GetSelectedItem(false);
+        if (receivedItem != null)
+        {
+            Debug.Log("Received item: " + receivedItem);
+        }
+        else
+        {
+            Debug.Log("No item received!");
+        }
+    }
+
+    public void UseSelectedItem()
+    {
+        Item receivedItem = inventoryManager.GetSelectedItem(true);
+        if (receivedItem != null)
+        {
+            Debug.Log("Received item: " + receivedItem);
+        }
+        else
+        {
+            Debug.Log("No item received!");
+        }
+    }
 }
