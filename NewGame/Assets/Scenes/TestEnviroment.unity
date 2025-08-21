@@ -716,6 +716,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: What TheDogDoin'_HEAD
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 39d75fa2d645ffe41aa1f5b52b196842, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 99cb91fe8c6c04840b899a6fcee55625, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

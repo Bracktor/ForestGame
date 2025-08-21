@@ -21,12 +21,14 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController characterController;
 
     private bool canMove = true;
+    private Animator animator;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -38,6 +40,14 @@ public class PlayerMovement : MonoBehaviour
         float curSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
         float curSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y; moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+
+        // ---ANIMATION STUFF DON'T TOUCH--------------------------------------------------------------
+        Vector3 flatVelocity = new Vector3(moveDirection.x, 0, moveDirection.z);
+        bool isWalking = flatVelocity.magnitude > 0.01f;
+
+        animator.SetBool("isWalking", isWalking);
+        animator.SetBool("isRunning", isWalking && isRunning);
+        // --------ANIMATION STUFF DON'T TOUCH------------------------------------------------------------------------------------------
 
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
