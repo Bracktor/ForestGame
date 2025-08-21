@@ -37,6 +37,8 @@ public class InventoryManager : MonoBehaviour
         selectedSlot = newValue;
 
     }
+
+
     public bool AddItem(Item item)
     {
         for (int i = 0; i < inventorySlots.Length; i++)
@@ -96,5 +98,7 @@ public class InventoryManager : MonoBehaviour
         }
         return null;
     }
+
+
 
 }
