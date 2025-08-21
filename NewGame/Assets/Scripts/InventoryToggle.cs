@@ -4,7 +4,7 @@ public class InventoryToggle : MonoBehaviour
 {
     public GameObject inventoryUI;    // Assign in inspector
     public PlayerMovement playerMovement;
-
+    public InventoryManager inventoryManager;
     private bool isInventoryOpen = false;
 
     void Update()
@@ -27,5 +27,26 @@ public class InventoryToggle : MonoBehaviour
                 Cursor.visible = false;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            UseSelectedItem();
+        }
+    }
+
+    public void UseSelectedItem()
+    {
+            Item receivedItem = inventoryManager.GetSelectedItem(true);
+            Debug.Log("No item received!");
+            if (receivedItem != null)
+            {
+                Debug.Log("Received item: " + receivedItem);
+
+            }
+            else
+            {
+                Debug.Log("No item received!");
+            }
+        
     }
 }
