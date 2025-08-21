@@ -49,13 +49,22 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isRunning", isWalking && isRunning);
         // --------ANIMATION STUFF DON'T TOUCH------------------------------------------------------------------------------------------
 
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+        if (characterController.isGrounded)
         {
-            moveDirection.y = jumpPower;
+            if (Input.GetButton("Jump") && canMove)
+            {
+                moveDirection.y = jumpPower;
+            }
+            else
+            {
+                moveDirection.y = -2f; // small downward force to keep grounded
+            }
         }
         else
         {
+            // Apply gravity when in air
             moveDirection.y = movementDirectionY;
+            moveDirection.y -= gravity * Time.deltaTime;
         }
 
         if (!characterController.isGrounded)
