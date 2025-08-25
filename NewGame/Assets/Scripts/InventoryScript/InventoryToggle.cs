@@ -11,7 +11,18 @@ public class InventoryToggle : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            isInventoryOpen = !isInventoryOpen;
+            toggleInventory();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            UseSelectedItem();
+        }
+    }
+
+    public void toggleInventory()
+    {
+        isInventoryOpen = !isInventoryOpen;
             inventoryUI.SetActive(isInventoryOpen);
 
             if (isInventoryOpen)
@@ -26,27 +37,23 @@ public class InventoryToggle : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            UseSelectedItem();
-        }
     }
 
     public void UseSelectedItem()
     {
-            Item receivedItem = inventoryManager.GetSelectedItem(true);
-            Debug.Log("No item received!");
-            if (receivedItem != null)
-            {
-                Debug.Log("Received item: " + receivedItem);
+        Item receivedItem = inventoryManager.GetSelectedItem(true);
+        Debug.Log("No item received!");
+        if (receivedItem != null)
+        {
+            Debug.Log("Received item: " + receivedItem);
 
-            }
-            else
-            {
-                Debug.Log("No item received!");
-            }
-        
+        }
+        else
+        {
+            Debug.Log("No item received!");
+        }
+
     }
+    
+    
 }
