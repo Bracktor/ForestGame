@@ -1,3 +1,5 @@
+using UnityEngine;
+
 [CreateAssetMenu(fileName = "NewPotion", menuName = "Inventory/Potion")]
 public class PotionItem : Item
 {
