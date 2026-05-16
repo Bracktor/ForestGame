@@ -30,6 +30,7 @@ public class InventoryActions : MonoBehaviour
             Debug.Log("No item received!");
             if (receivedItem != null)
             {
+                receivedItem.Use(gameObject);
                 Debug.Log("Received item: " + receivedItem);
 
             }
