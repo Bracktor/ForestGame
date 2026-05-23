@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+ 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,45 +15,49 @@ public class PlayerMovement : MonoBehaviour
     public float defaultHeight = 2f;
     public float crouchHeight = 1f;
     public float crouchSpeed = 3f;
-
+ 
     private Vector3 moveDirection = Vector3.zero;
     private float rotationX = 0;
     private CharacterController characterController;
-
+ 
     public bool canMove = true;
+    [HideInInspector] public bool canSprint = true;  // set by StaminaSystem
     private Animator animator;
-
+    private StaminaSystem staminaSystem;
+ 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         animator = GetComponentInChildren<Animator>();
+        staminaSystem = GetComponent<StaminaSystem>();
     }
-
+ 
     void Update()
     {
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
-
-        bool isRunning = Input.GetKey(KeyCode.LeftShift);
+ 
+        bool isRunning = Input.GetKey(KeyCode.LeftShift) && canSprint;
         float curSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
         float curSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y; moveDirection = (forward * curSpeedX) + (right * curSpeedY);
-
+ 
         // ---ANIMATION STUFF DON'T TOUCH--------------------------------------------------------------
         Vector3 flatVelocity = new Vector3(moveDirection.x, 0, moveDirection.z);
         bool isWalking = flatVelocity.magnitude > 0.01f;
-
+ 
         animator.SetBool("isWalking", isWalking);
         animator.SetBool("isRunning", isWalking && isRunning);
         // --------ANIMATION STUFF DON'T TOUCH------------------------------------------------------------------------------------------
-
+ 
         if (characterController.isGrounded)
         {
             if (Input.GetButton("Jump") && canMove)
             {
                 moveDirection.y = jumpPower;
+                staminaSystem?.UseJumpStamina();
             }
             else
             {
@@ -66,18 +70,18 @@ public class PlayerMovement : MonoBehaviour
             moveDirection.y = movementDirectionY;
             moveDirection.y -= gravity * Time.deltaTime;
         }
-
+ 
         if (!characterController.isGrounded)
         {
             moveDirection.y -= gravity * Time.deltaTime;
         }
-
+ 
         if (Input.GetKey(KeyCode.R) && canMove)
         {
             characterController.height = crouchHeight;
             walkSpeed = crouchSpeed;
             runSpeed = crouchSpeed;
-
+ 
         }
         else
         {
@@ -85,9 +89,9 @@ public class PlayerMovement : MonoBehaviour
             walkSpeed = 6f;
             runSpeed = 12f;
         }
-
+ 
         characterController.Move(moveDirection * Time.deltaTime);
-
+ 
         if (canMove)
         {
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;

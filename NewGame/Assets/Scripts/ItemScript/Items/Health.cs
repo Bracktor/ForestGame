@@ -7,9 +7,15 @@ public class PotionItem : Item
 
     public override void Use(GameObject user)
     {
-        // swap out for your actual health component
         var health = user.GetComponent<HealthSystem>();
-        if (health != null) health.Heal(healAmount);
-        Debug.Log($"{itemName} healed {healAmount} HP");
+        if (health != null)
+        {
+            health.Heal(healAmount);
+            Debug.Log($"{itemName} healed {healAmount} HP");
+        }
+        else
+        {
+            Debug.LogWarning($"{itemName}: No HealthSystem found on {user.name}!");
+        }
     }
 }

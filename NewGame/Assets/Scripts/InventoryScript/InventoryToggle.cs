@@ -5,6 +5,7 @@ public class InventoryToggle : MonoBehaviour
     public GameObject inventoryUI;    // Assign in inspector
     public PlayerMovement playerMovement;
     public InventoryManager inventoryManager;
+    public GameObject player;         // Assign the Player GameObject in inspector
     private bool isInventoryOpen = false;
 
     void Update()
@@ -41,16 +42,19 @@ public class InventoryToggle : MonoBehaviour
 
     public void UseSelectedItem()
     {
+        Debug.Log("UseSelectedItem called");
+
         Item receivedItem = inventoryManager.GetSelectedItem(true);
         
         if (receivedItem != null)
         {
-            receivedItem.Use(gameObject);
-            Debug.Log("Received item: " + receivedItem.itemName);
+            GameObject target = player != null ? player : gameObject;
+            Debug.Log($"Using item: {receivedItem.itemName} on {target.name}");
+            receivedItem.Use(target);
         }
         else
         {
-            Debug.Log("No item received!");
+            Debug.LogWarning("No item in selected slot!");
         }
     }
     

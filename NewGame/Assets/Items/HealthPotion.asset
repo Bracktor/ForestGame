@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f07d0ab66664eb04da4ce5e8863d19e5, type: 3}
-  m_Name: Health
-  m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: Wow
-  image: {fileID: 21300000, guid: e6378ff617c7e4d5eb7d52172055578c, type: 3}
-  description: Healing item
+  m_Script: {fileID: 11500000, guid: 151245b091e250b49a5d9efd67c366f6, type: 3}
+  m_Name: HealthPotion
+  m_EditorClassIdentifier: Assembly-CSharp::PotionItem
+  itemName: Health Potion
+  image: {fileID: 21300000, guid: 040ea86abd0a74f24a7af842d70fc6db, type: 3}
+  description: 
   itemType: 1
   stackable: 1
+  healAmount: 50
