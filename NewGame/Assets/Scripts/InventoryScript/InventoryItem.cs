@@ -34,7 +34,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
+        
+        // Disable raycasts for both the image AND the text so the mouse looks "through" them
         image.raycastTarget = false;
+        if (countText != null) countText.raycastTarget = false; 
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -45,6 +48,9 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnEndDrag(PointerEventData eventData)
     {
         transform.SetParent(parentAfterDrag);
+        
+        // Turn the raycasts back on when dropped
         image.raycastTarget = true;
+        if (countText != null) countText.raycastTarget = true;
     }
 }

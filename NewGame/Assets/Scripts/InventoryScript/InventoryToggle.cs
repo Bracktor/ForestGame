@@ -42,18 +42,16 @@ public class InventoryToggle : MonoBehaviour
     public void UseSelectedItem()
     {
         Item receivedItem = inventoryManager.GetSelectedItem(true);
-        Debug.Log("No item received!");
+        
         if (receivedItem != null)
         {
             receivedItem.Use(gameObject);
-            Debug.Log("Received item: " + receivedItem);
-
+            Debug.Log("Received item: " + receivedItem.itemName);
         }
         else
         {
             Debug.Log("No item received!");
         }
-
     }
     
     
