@@ -755,6 +755,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d9f2123f5e79545a33a74afb40d741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+--- !u!114 &2095743931 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2006297605091404134, guid: 429e39bb71fd27e4ba411eb3279da7cb, type: 3}
+  m_PrefabInstance: {fileID: 2884523858776774087}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095743927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd501b55dcebcb8448e05df5e61d86c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
+--- !u!114 &2095743932 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5305846877119509393, guid: 429e39bb71fd27e4ba411eb3279da7cb, type: 3}
+  m_PrefabInstance: {fileID: 2884523858776774087}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095743927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c75ba0f8eaa14343b2801ffd7bd6dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaminaSystem
 --- !u!1001 &482463839985364753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -767,6 +789,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1889149193445071001, guid: 57d9875a9282d5e478d7faf606b11567, type: 3}
+      propertyPath: healthSystem
+      value: 
+      objectReference: {fileID: 2095743931}
+    - target: {fileID: 1889149193445071001, guid: 57d9875a9282d5e478d7faf606b11567, type: 3}
+      propertyPath: staminaSystem
+      value: 
+      objectReference: {fileID: 2095743932}
     - target: {fileID: 3230208098285438794, guid: 57d9875a9282d5e478d7faf606b11567, type: 3}
       propertyPath: m_Pivot.x
       value: 0
